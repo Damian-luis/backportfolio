@@ -13,7 +13,9 @@ app.listen(PORT, function(){
 })
 
 
-
+app.get('/info', function(req, res){
+    res.send("api funcionando correctamente")
+})
 
 
 app.post('/enviar',async (req, res)=>{
