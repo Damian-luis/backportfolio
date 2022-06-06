@@ -58,6 +58,6 @@ const message = req.body.message
       }
     });
   
-return res.redirect("https://example-two-smoky.vercel.app/#ContentSection6")
+return 
    
 })
