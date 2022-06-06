@@ -1,14 +1,18 @@
 const express=require("express");
 const nodemailer=require('nodemailer');
+const bodyParser=require('body-parser');
+const cookieParser=require('cookie-parser');
 
 const app=express();
 
 
 var cors = require('cors')
-
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json());
+app.use(cookieParser())
 app.use(cors()) // Use this after the variable declaration
 
-app.use(express.urlencoded({ extended: true }))
+
 const PORT=process.env.PORT ||8081;
 app.listen(PORT, function(){
   console.log("escuchando en el puerto 8081")
