@@ -4,7 +4,9 @@ const nodemailer=require('nodemailer');
 const app=express();
 
 
+var cors = require('cors')
 
+app.use(cors()) // Use this after the variable declaration
 
 app.use(express.urlencoded({ extended: true }))
 const PORT=process.env.PORT ||8081;
