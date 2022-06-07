@@ -45,7 +45,7 @@ const email = req.body.email
 
     var mailOptions = {
       from: name,
-      to: "damian.duran@gmail.com", // list of receivers
+      to: "damian.luis.porta@gmail.com", // list of receivers
       subject: "Nuevo mensaje en Webleads!", // Subject line
        // plain text body
       text: "",
