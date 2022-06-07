@@ -36,7 +36,7 @@ const email = req.body.email
       // true for 465, false for other ports
       auth: {
         user: 'webleadsgroup@gmail.com', // generated ethereal user
-        pass: 'fknzicgulrqnecnkv', // generated ethereal password
+        pass: 'mqqyzdzovnpvydqj', // generated ethereal password
       }
     
     });
