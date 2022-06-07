@@ -30,6 +30,7 @@ const name = req.body.name
 const number = req.body.number
 const company = req.body.company
 const message = req.body.message
+const email = req.body.email
   let transporter = nodemailer.createTransport({
     service: 'gmail',
       // true for 465, false for other ports
@@ -43,13 +44,30 @@ const message = req.body.message
 
 
     var mailOptions = {
-      from: '"Damiancito 👻" <damian.luis.porta@gmail.com>', // sender address
+      from: name,
       to: "damian.duran@webleadsgroup.com", // list of receivers
-      subject: "Hello ✔", // Subject line
+      subject: "Nuevo mensaje en Webleads!", // Subject line
        // plain text body
-       text: "Hello cit",
-      html: `<h1>Hola mi nombre es ${name}, trabajo en mi empresa ${company}, me comunico por ${message}.Adicionalmente
-      te dejo mi numero ${number}</h1>`// html body
+      text: "",
+      html: `<div style="width:100%;height:auto; box-sizing: border-box;background-color:black;border-radius:15px;">
+
+      <div style="justify-content:center;width:100%;height:10%;background: rgb(18,131,215);
+      background: linear-gradient(90deg, rgba(18,131,215,1) 0%, rgba(204,21,58,1) 49%, rgba(232,215,18,1) 100%);">
+      <h3 style="color:white;text-align: center;">Webleads Group </h3>
+      </div>
+
+      <div style="padding:20px">
+      <div style="background-color: rgba(255, 255, 255, 0.37); height:80%;width:90%;border:solid 1px white;border-radius:10px;padding:10px;color:white;">
+      <h4>Mensaje recibido de: ${name} <br>
+          Compañía: ${company} <br>
+          Numero de contacto: ${number} <br>
+          Correo electrónico: ${email} <br>
+          Mensaje: <br><br>
+      
+      <h2 style="text-align:center;">${message}</h1>
+      </div> </div>
+      
+      </div>`// html body
     }
     
     
@@ -62,6 +80,7 @@ const message = req.body.message
       }
     });
   
-return 
+return res.send("Mensaje enviado exitosamente a webleads!")
+
    
 })
