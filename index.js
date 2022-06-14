@@ -35,8 +35,8 @@ const email = req.body.email
     service: 'gmail',
       // true for 465, false for other ports
       auth: {
-        user: 'webleadsgroup@gmail.com', // generated ethereal user
-        pass: 'mqqyzdzovnpvydqj', // generated ethereal password
+        user: 'damian.duran@webleadsgroup.com', // generated ethereal user
+        pass: 'jdlodywdllwkvzjg', // generated ethereal password
       }
     
     });
@@ -45,7 +45,7 @@ const email = req.body.email
 
     var mailOptions = {
       from: name,
-      to: "info@webleadsgroup.com", // list of receivers
+      to: "damian.luis.porta@gmail.com", // list of receivers
       subject: "Nuevo mensaje en Webleads!", // Subject line
        // plain text body
       text: "",
