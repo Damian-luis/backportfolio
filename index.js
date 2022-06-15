@@ -30,7 +30,7 @@ const name = req.body.name
 const number = req.body.number
 const company = req.body.company
 const message = req.body.message
-const email = req.body.email
+const email = req.body.mail
 const file = req.body.file
   let transporter = nodemailer.createTransport({
     service: 'gmail',
