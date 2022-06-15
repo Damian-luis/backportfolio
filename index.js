@@ -80,7 +80,7 @@ const email = req.body.email
       }
     });
   
-return res.send("Mensaje enviado exitosamente a webleads!")
+return res.send("Mensaje enviado exitosamente a webleads! ")
 
    
 })
