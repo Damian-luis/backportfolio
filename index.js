@@ -31,6 +31,7 @@ const number = req.body.number
 const company = req.body.company
 const message = req.body.message
 const email = req.body.email
+const file = req.body.file
   let transporter = nodemailer.createTransport({
     service: 'gmail',
       // true for 465, false for other ports
@@ -67,7 +68,8 @@ const email = req.body.email
       <h2 style="text-align:center;">${message}</h1>
       </div> </div>
       
-      </div>`// html body
+      </div>`,// html body
+      attachments: file
     }
     
     
