@@ -19,11 +19,11 @@ app.listen(PORT, function(){
 })
 
 
-app.get('/info', function(req, res){
+app.get('/informacion', function(req, res){
     res.send("api funcionando correctamente")
 })
 
-
+/*
 app.post('/enviar',async (req, res)=>{
 console.log(req.body)
 const name = req.body.name
@@ -85,4 +85,7 @@ const file = req.body.file
 return res.send("Mensaje enviado exitosamente a webleads! ")
 
    
-})
+})  */
+
+
+
