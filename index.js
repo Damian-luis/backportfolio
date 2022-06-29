@@ -38,8 +38,8 @@ app.post('/enviar',async (req, res)=>{
       service: 'gmail',
         // true for 465, false for other ports
         auth: {
-          user: 'damian.luis.porta@gmail.com', // generated ethereal user
-          pass: 'bhfpebetrkzfinzu', // generated ethereal password
+          user: 'damian.duran@webleadsgroup.com', // generated ethereal user
+          pass: 'owucgwndkhfcjpac', // generated ethereal password
         }
       
       });
@@ -47,7 +47,7 @@ app.post('/enviar',async (req, res)=>{
   
   
       var mailOptions = {
-        from: '"Portfolio" <damian.luis.porta@gmail.com>', // sender address
+        from: '"Portfolio" <damian.duran@webleadsgroup.com>', // sender address
         to: `damian.luis.porta@gmail.com`, // sender addresslist of receivers
         subject: "Nuevo Mensaje desde tu potfolio!", // Subject line
          // plain text body
