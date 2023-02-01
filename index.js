@@ -2,9 +2,8 @@ const express=require("express");
 const nodemailer=require('nodemailer');
 const bodyParser=require('body-parser');
 const cookieParser=require('cookie-parser');
-
+var cors = require('cors')
 const app=express();
-
 
 var cors = require('cors')
 app.use(bodyParser.urlencoded({ extended: true }))
