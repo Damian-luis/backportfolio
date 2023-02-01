@@ -13,9 +13,9 @@ app.use(cookieParser())
 app.use(cors()) // Use this after the variable declaration
 
 
-const PORT=process.env.PORT ||8081;
+const PORT=process.env.PORT ||3000;
 app.listen(PORT, function(){
-  console.log("escuchando en el puerto 8081")
+  console.log("escuchando en el puerto " +PORT)
 })
 
 
@@ -79,7 +79,7 @@ app.post('/enviar',async (req, res)=>{
         // true for 465, false for other ports
         auth: {
           user: 'damian.luis.porta@gmail.com', // generated ethereal user
-          pass: 'bhfpebetrkzfinzu', // generated ethereal password
+          pass: 'djksersjkfniyngs', // generated ethereal password
         }
       
       });
