@@ -38,8 +38,8 @@ app.post('/enviar',async (req, res)=>{
       service: 'gmail',
         // true for 465, false for other ports
         auth: {
-          user: 'damian.duran@webleadsgroup.com', // generated ethereal user
-          pass: 'owucgwndkhfcjpac', // generated ethereal password
+          user: 'el.pibe.sabe.todo4@gmail.com', // generated ethereal user
+          pass: 'bhfuwxfjqwgwynle', // generated ethereal password
         }
       
       });
