@@ -59,6 +59,14 @@ console.log(name+message+name)
     }
 
 
+  
+
+  }
+
+
+
+  await new Promise((resolve, reject) => {
+    // send mail
     transporter.sendMail(mailOptions, (error, info) => {
       console.log("senMail returned!");
       if (error) {
@@ -67,8 +75,8 @@ console.log(name+message+name)
         console.log('Email sent: ' + info.response);
       }
     });
+});
 
-  }
 
 
   function mailAutoReply() {
@@ -116,6 +124,8 @@ console.log(name+message+name)
         console.log('Email sent: ' + info.response);
       }
     });
+
+    
 
   }
 
