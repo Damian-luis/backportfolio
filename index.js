@@ -121,12 +121,17 @@ console.log(name+message+name)
 
   var mails = [mailToMyself, mailAutoReply]
 
-
+try{
   for (var i = 0; i < 2; i++) {
     mails[i]()
   }
-
   return res.send("mensaje enviado correctamente")
+}
+  catch(e){
+res.send(e)
+  }
+
+  
 
 })
 
