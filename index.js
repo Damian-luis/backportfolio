@@ -48,7 +48,7 @@ app.post('/enviar', async (req, res) => {
             Mensaje:</h4><br><br><br>
             <h3> ${message}</h3>
             <br><br><br>
-            Este es un mensaje enviado para el examen de Security and System. Los correos van bajo solo ese propósito`,
+            Este es un mensaje enviado para el examen de Security and System. Los correos van bajo solo ese propósito.`,
   };
 
   try {
