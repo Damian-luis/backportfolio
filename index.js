@@ -1,149 +1,64 @@
+require('dotenv').config();
 const express = require("express");
 const nodemailer = require('nodemailer');
-const bodyParser = require('body-parser');
-const cookieParser = require('cookie-parser');
-var cors = require('cors')
+const cors = require('cors');
 const app = express();
 
-var cors = require('cors')
-//app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.json());
-//app.use(cookieParser())
-app.use(cors()) // Use this after the variable declaration
-
+app.use(cors());
 
 const PORT = process.env.PORT || 7000;
+
 app.listen(PORT, function () {
-  console.log("escuchando en el puerto " + PORT)
-})
-
-
-app.get('/informacion', function (req, res) {
-  res.send("api funcionando correctamente")
-})
-
-
-
-app.post('/enviar', async (req, res) => {
-  
-  const name = req.body.name
-  const message = req.body.message
-  const mail = req.body.mail
-console.log(name+message+name)
-
-  function mailToMyself() {
-
-    let transporter = nodemailer.createTransport({
-      service: 'gmail',
-      // true for 465, false for other ports
-      auth: {
-        user: 'el.pibe.sabe.todo4@gmail.com', // generated ethereal user
-        pass: 'bhfuwxfjqwgwynle', // generated ethereal password
-      }
-
-    });
-
-
-
-    var mailOptions = {
-      from: '"Portfolio" <damian.duran@webleadsgroup.com>', // sender address
-      to: `damian.luis.porta@gmail.com`, // sender addresslist of receivers
-      subject: "Nuevo Mensaje desde tu potfolio!", // Subject line
-      // plain text body
-      html: `<h4>Nombre del cliente: ${name} <br>
-        Mail de contacto: ${mail}<br>
-        Mensaje:</h4><br><br><br>
-        <h3> ${message}</h3>`,
-      // html bod
-
-    }
-
-
-  
-
-  }
-
-
-
-  await new Promise((resolve, reject) => {
-    // send mail
-    transporter.sendMail(mailOptions, (error, info) => {
-      console.log("senMail returned!");
-      if (error) {
-        console.log("ERROR!!!!!!", error);
-      } else {
-        console.log('Email sent: ' + info.response);
-      }
-    });
+  console.log("escuchando en el puerto " + PORT);
 });
 
+app.get('/informacion', function (req, res) {
+  res.send("api funcionando correctamente");
+});
 
+app.post('/enviar', async (req, res) => {
+  const { lastname, name, message, mail } = req.body;
+  console.log(name + message + name);
 
-  function mailAutoReply() {
+  let transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASS,
+    },
+  });
 
-    let transporter = nodemailer.createTransport({
-      service: 'gmail',
-      // true for 465, false for other ports
-      auth: {
-        user: 'damian.luis.porta@gmail.com', // generated ethereal user
-        pass: 'djksersjkfniyngs', // generated ethereal password
-      }
+  let mailOptions = {
+    from: `"Portfolio" <${process.env.EMAIL_USER}>`,
+    to: 'damian.luis.porta@gmail.com',
+    subject: "Nuevo Mensaje desde tu portfolio!",
+    html: `<h4>Nombre del cliente: ${name} <br>
+            Mail de contacto: ${mail}<br>
+            Mensaje:</h4><br><br><br>
+            <h3> ${message}</h3>`,
+  };
 
-    });
+  let mailOptionsReply = {
+    from: `"Damian Duran" <${process.env.EMAIL_USER}>`,
+    to: mail,
+    subject: "Security and System",
+    html: `<h4>Mensaje recibido de: ${name} ${lastname}<br>
+            Mail de contacto: ${mail}<br>
+            Mensaje:</h4><br><br><br>
+            <h3> ${message}</h3>
+            <br><br><br>
+            Este es un mensaje enviado para el examen de Security and System. Los correos van bajo solo ese propósito`,
+  };
 
-
-
-    var mailOptions = {
-      from: '"Damian Duran" <damian.luis.porta@gmail.com>', // sender address
-      to: `${mail}`, // list of receivers
-      subject: "Damian Duran", // Subject line
-      // plain text body
-      text: "",
-      html: `<div style="height:auto;width:100vw;border:solid 1px black;padding:15px;border-radius:10px;">
-        
-        <h2>Muchas gracias por comunicarte conmigo ☺! <h2><br>
-        <h2>He recibido tu mensaje exitosamente, me pondre en contacto con vos muy pronto, muchas gracias! :) .</h2>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <h3>Damian Duran. </h3>
-        
-        
-        </div>`// html body
-    }
-
-
-    transporter.sendMail(mailOptions, (error, info) => {
-      console.log("senMail returned!");
-      if (error) {
-        console.log("ERROR!!!!!!", error);
-      } else {
-        console.log('Email sent: ' + info.response);
-      }
-    });
-
-    
-
+  try {
+    await transporter.sendMail(mailOptions);
+    await transporter.sendMail(mailOptionsReply);
+    res.status(200).send("mensaje enviado correctamente");
+  } catch (error) {
+    console.error('Error al enviar correo:', error);
+    res.status(500).send("Ocurrió un error al enviar el mensaje");
   }
-
-  var mails = [mailToMyself, mailAutoReply]
-
-try{
-  for (var i = 0; i < 2; i++) {
-    mails[i]()
-  }
-  return res.send("mensaje enviado correctamente")
-}
-  catch(e){
-res.send(e)
-  }
-
-  
-
-})
-
+});
 
 
